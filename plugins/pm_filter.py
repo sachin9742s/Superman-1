@@ -319,14 +319,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     ]
                 
                 await query.answer()
-                await client.send_cached_media(
+                file = await client.send_cached_media(
                     chat_id=SEND_CHANNEL,
                     file_id=file_id,
                     caption=f_caption,
                     reply_markup=InlineKeyboardMarkup(buttons)
                     )
                 message = query.message.reply_to_message
-                await message.reply_text("Get File", reply_markup=InlineKeyboardMarkup(buttons))
+                humm = [[
+                        InlineKeyboardButton("🚀 GET FILE 🚀", url=f"{file.link}")
+                        ],[
+                        InlineKeyboardButton("Close", callback_data="close")
+                        ]]
+                reply_markup=InlineKeyboardMarkup(humm)
+                await message.reply_text(text=f"📂 **File**: {title}\n\n💽 **Size**: {size}", reply_markup=reply_markup)  
         elif query.data.startswith("checksub"):
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒",show_alert=True)
