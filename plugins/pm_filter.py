@@ -8,6 +8,7 @@ from utils import get_filter_results, get_file_details
 BUTTONS = {}
 BOT = {}
 SEND_CHANNEL = os.environ.get(["SEND_CHANNEL"])
+SEND_USERNAME = os.environ.get(["SEND_USERNAME"])
 
 @Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & filters.incoming)
 async def group(client, message):
@@ -218,9 +219,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
                 message = query.message.reply_to_message
                 humm = [[
-                        InlineKeyboardButton("🚀 GET FILE 🚀", url=f"{file.link}")
+                        InlineKeyboardButton("📥 Download Link 📥", url=f"{file.link}")
                         ],[
-                        InlineKeyboardButton("Close", callback_data="close")
+                        InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
                 await message.reply_text(text=f"Hey 👋 {query.from_user.mention} 😍
