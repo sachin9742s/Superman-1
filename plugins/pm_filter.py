@@ -224,13 +224,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
-                await message.reply_text(text=f"Hey 👋 {query.from_user.mention} 😍
+                await message.reply_text(text=f"""Hey 👋 {query.from_user.mention} 😍
 
 📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {file_name}
 
-⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {file_size}", reply_markup=reply_markup)  
+⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {file_size}""", reply_markup=reply_markup)  
         
 
 
