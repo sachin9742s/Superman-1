@@ -31,16 +31,17 @@ async def group(client, message):
                     [InlineKeyboardButton(text=f"📁 {filename}", callback_data=f"subinps#{file_id}")]
                 )
         else:
+            google_keyword = search.replace(" ", "+")
             msg = await message.reply_text(text="""
-                <b>Hello {} I could not find the movie you asked for...
-Google, IMDB Click on any button and find the <u>CORRECT MOVIE NAME</u> and enter it here but the movie will be available...
-If you do not receive the movie even after entering the correct name...  <code>@admin type movie name</code> Inform the admin in this format.. We will upload within 24 hours </b>
+                <b>Hello {} I could not find the movie you asked for 🥲
+
+Click on buttons below to search on google or IMDb</b>
                   """.format(message.from_user.mention),
                  reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton('🌟 ɪᴍᴅʙ 🌟', url='https://imdb.com'),
-                        InlineKeyboardButton('⚡ ɢᴏᴏɢʟᴇ ⚡️', url='https://www.google.com')
+                        InlineKeyboardButton('⚡ ɢᴏᴏɢʟᴇ ⚡️', url=f'https://www.google.com/search?q={google_keyword}')
                     ],
                     [
                         InlineKeyboardButton("🥲 ഒന്നും മനസ്സിലാവുന്നില്ലലോ 🥲", callback_data="no_results")
@@ -226,9 +227,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
 
 ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
-                asynio.sleep(600)
-                asyncio.delete(filess)
-                asyncio.delete(msg1)
+                await asynio.sleep(600)
+                await filess.delete()
+                await msg1.delete()
                 
                 return  
         
