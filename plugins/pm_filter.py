@@ -146,3 +146,56 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons)
                 )
                 return
+
+        elif query.data.startswith("back"):
+            ident, index, keyword = query.data.split("_")
+            try:
+                data = BUTTONS[keyword]
+            except KeyError:
+                await query.answer("You are using this for one of my old message, please send the request again.",show_alert=True)
+                return
+
+            if int(index) == 1:
+                buttons = data['buttons'][int(index)-1].copy()
+
+                buttons.append(
+                    [InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
+                )
+                if BUTTON:
+                    buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
+
+                await query.edit_message_reply_markup( 
+                    reply_markup=InlineKeyboardMarkup(buttons)
+                )
+                return   
+            else:
+                buttons = data['buttons'][int(index)-1].copy()
+
+                buttons.append(
+                    [InlineKeyboardButton("⏪ BACK", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
+                )
+                if BUTTON:
+                    buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
+
+                await query.edit_message_reply_markup( 
+                    reply_markup=InlineKeyboardMarkup(buttons)
+                )
+                return
+
+
+        elif query.data.startswith("subinps"):
+            ident, file_id = query.data.split("#")
+            filedetails = await get_file_details(file_id)
+            for files in filedetails:
+                title = files.file_name
+                size=get_size(files.file_size)
+                f_caption=files.caption
+                if CUSTOM_FILE_CAPTION:
+                    try:
+                        f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption)
+                    except Exception as e:
+                        print(e)
+                        f_caption=f_caption
+                if f_caption is None:
+                    f_caption = f"{files.file_name}"
+                buttons = [
