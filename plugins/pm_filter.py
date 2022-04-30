@@ -199,3 +199,46 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 if f_caption is None:
                     f_caption = f"{files.file_name}"
                 buttons = [
+                    [
+                        InlineKeyboardButton('Join Here 👻', url='https://t.me/joel_noob')
+                    ]
+                    ]
+                
+                await query.answer()
+                filess = await client.send_cached_media(
+                    chat_id=SEND_CHANNEL,
+                    file_id=file_id,
+                    caption=f_caption,
+                    reply_markup=InlineKeyboardMarkup(buttons)
+                    )
+                
+                humm = [[
+                        InlineKeyboardButton("📥 Download Link 📥", url=f"{filess.link}")
+                        ],[
+                        InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
+                        ]]
+                reply_markup=InlineKeyboardMarkup(humm)
+                await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 
+
+📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
+
+📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
+
+⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
+                return  
+        
+
+
+        elif query.data == "pages":
+            await query.answer("No Use", show_alert=False)
+        elif query.data == "close":
+            try:
+                await query.message.reply_to_message.delete()
+                await query.message.delete()
+            except:
+                await query.message.delete()
+        elif query.data == "no_results":
+            await query.answer("സിനിമ ലഭിക്കണം എങ്കിൽ താങ്കൾ ഗൂഗിൾ നോക്കി സിനിമയുടെ correct spelling ഇവിടെ send ചെയ്യുക എങ്കിലേ താങ്കൾ ഉദ്ദേശിക്കുന്ന സിനിമ എനിക്ക് അയച്ചു തരാൻ കഴിയുകയുള്ളു 😊", show_alert=True)
+                
+    else:
+        await query.answer("Not For You !",show_alert=True)
