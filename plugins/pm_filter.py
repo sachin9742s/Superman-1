@@ -4,6 +4,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from pyrogram import Client, filters
 import re
 import os
+import asyncio
 from utils import get_filter_results, get_file_details
 BUTTONS = {}
 BOT = {}
@@ -227,7 +228,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
 
 ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
-                await asynio.sleep(600)
+                await asyncio.sleep(600)
                 await filess.delete()
                 await msg1.delete()
                 
