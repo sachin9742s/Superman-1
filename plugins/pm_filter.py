@@ -31,7 +31,27 @@ async def group(client, message):
                     [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
-            return
+            msg = await message.reply_text(text="""
+                <b>Hello {} I could not find the movie you asked for...
+Google, IMDB Click on any button and find the <u>CORRECT MOVIE NAME</u> and enter it here but the movie will be available...
+If you do not receive the movie even after entering the correct name...  <code>@admin type movie name</code> Inform the admin in this format.. We will upload within 24 hours </b>
+                  """.format(message.from_user.mention),
+                 parse_mode="html",
+                 reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton('🌟 ɪᴍᴅʙ 🌟', url='https://imdb.com'),
+                        InlineKeyboardButton('⚡ ɢᴏᴏɢʟᴇ ⚡️', url='https://www.google.com')
+                    ],
+                    [
+                        InlineKeyboardButton("🥲 ഒന്നും മനസ്സിലാവുന്നില്ലലോ 🥲", callback_data="no_results")
+                    ]
+                ]
+            )
+        )
+                 await asyncio.sleep(20)
+                 await message.delete()
+                 await msg.delete()
         if not btn:
             return
 
@@ -242,6 +262,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 await query.message.delete()
             except:
                 await query.message.delete()
+        elif query.data == "no_results":
+            await query.answer("സിനിമ ലഭിക്കണം എങ്കിൽ താങ്കൾ ഗൂഗിൾ നോക്കി സിനിമയുടെ correct spelling ഇവിടെ send ചെയ്യുക എങ്കിലേ താങ്കൾ ഉദ്ദേശിക്കുന്ന സിനിമ എനിക്ക് അയച്ചു തരാൻ കഴിയുകയുള്ളു 😊", show_alert=True)
                 
     else:
         await query.answer("Not For You !",show_alert=True)
