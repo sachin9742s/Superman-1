@@ -212,19 +212,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     reply_markup=InlineKeyboardMarkup(buttons)
                     )
                 
+                
                 humm = [[
                         InlineKeyboardButton("📥 Download Link 📥", url=f"{filess.link}")
                         ],[
                         InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
-                await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 
+                msg1 = await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 
 
 📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
 
 ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
+                asynio.sleep(600)
+                asyncio.delete(filess)
+                asyncio.delete(msg1)
+                
                 return  
         
 
