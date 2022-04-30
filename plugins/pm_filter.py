@@ -45,3 +45,53 @@ If you do not receive the movie even after entering the correct name...  <code>@
                     [
                         InlineKeyboardButton("🥲 ഒന്നും മനസ്സിലാവുന്നില്ലലോ 🥲", callback_data="no_results")
                     ]
+                ]
+            )
+        )
+            await asyncio.sleep(20)
+            await message.delete()
+            await msg.delete()
+        if not btn:
+            return
+
+        if len(btn) > 10: 
+            btns = list(split_list(btn, 10)) 
+            keyword = f"{message.chat.id}-{message.id}"
+            BUTTONS[keyword] = {
+                "total" : len(btns),
+                "buttons" : btns
+            }
+        else:
+            buttons = btn
+            if BUTTON:
+                buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
+
+            await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
+
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                reply_markup=InlineKeyboardMarkup(buttons))
+            return
+
+        data = BUTTONS[keyword]
+        buttons = data['buttons'][0].copy()
+
+        buttons.append(
+            [InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_0_{keyword}")]
+        )
+        if BUTTON:
+            buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
+        await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
+
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                reply_markup=InlineKeyboardMarkup(buttons))
+    
+def get_size(size):
+    """Get size in readable format"""
+
+    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
+    size = float(size)
+    i = 0
+    while size >= 1024.0 and i < len(units):
+        i += 1
+        size /= 1024.0
+    return "%.2f %s" % (size, units[i])
