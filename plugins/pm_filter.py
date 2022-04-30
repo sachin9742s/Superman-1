@@ -49,9 +49,9 @@ If you do not receive the movie even after entering the correct name...  <code>@
                 ]
             )
         )
-                 await asyncio.sleep(20)
-                 await message.delete()
-                 await msg.delete()
+            await asyncio.sleep(20)
+            await message.delete()
+            await msg.delete()
         if not btn:
             return
 
