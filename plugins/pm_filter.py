@@ -224,7 +224,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 reply_markup=InlineKeyboardMarkup(humm)
                 msg1 = await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 😍
 
-📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
+📫 YᴏUʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ :[CB].{title}
 
