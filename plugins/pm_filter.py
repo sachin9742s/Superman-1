@@ -4,7 +4,6 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from pyrogram import Client, filters
 import re
 import os
-import asyncio
 from utils import get_filter_results, get_file_details
 BUTTONS = {}
 BOT = {}
@@ -34,9 +33,11 @@ async def group(client, message):
         else:
             google_keyword = search.replace(" ", "+")
             msg = await message.reply_text(text="""
-                <b>Hello {} I could not find the movie you asked for 🥲
+                <b>ʜᴇʟʟᴏ {} 👋
 
-Click on buttons below to search on google or IMDb</b>
+ɪ ᴄᴏᴜʟᴅ ɴᴏᴛ ꜰɪɴᴅ ᴛʜᴇ ᴍᴏᴠɪᴇ ʏᴏᴜ ᴀꜱᴋᴇᴅ ꜰᴏʀ 🥲
+
+ᴄʟɪᴄᴋ ᴏɴ ʙᴜᴛᴛᴏɴꜱ ʙᴇʟᴏᴡ ᴛᴏ ꜱᴇᴀʀᴄʜ ᴏɴ ɢᴏᴏɢʟᴇ ᴏʀ ɪᴍᴅʙ</b>
                   """.format(message.from_user.mention),
                  reply_markup=InlineKeyboardMarkup(
                 [
@@ -202,7 +203,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('Join Here 👻', url='https://t.me/joel_noob')
+                        InlineKeyboardButton('ᴊᴏɪɴ ɴᴏᴡ ⚫️', url='https://t.me/+yn4CU4occNU2NGNl')
                     ]
                     ]
                 
@@ -216,16 +217,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 
                 
                 humm = [[
-                        InlineKeyboardButton("📥 Download Link 📥", url=f"{filess.link}")
+                        InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ 📥", url=f"{filess.link}")
                         ],[
-                        InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
+                        InlineKeyboardButton("⚠️ ᴄᴀɴ'ᴛ ᴀᴄᴄᴇꜱꜱ❓ ᴘʀᴇꜱꜱ ʜᴇʀᴇ ⚠️", url=f"https://t.me/{SEND_USERNAME}")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
-                msg1 = await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 
+                msg1 = await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 😍
 
 📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
-📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
+📂 Mᴏᴠɪᴇ Nᴀᴍᴇ :[CB].{title}
 
 ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
                 await asyncio.sleep(600)
