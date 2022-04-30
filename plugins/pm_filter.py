@@ -28,7 +28,7 @@ async def group(client, message):
                 file_id = file.file_id
                 filename = f"[{get_size(file.file_size)}] {file.file_name}"
                 btn.append(
-                    [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
+                    [InlineKeyboardButton(text=f"📁 {filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
             msg = await message.reply_text(text="""
@@ -64,9 +64,6 @@ If you do not receive the movie even after entering the correct name...  <code>@
             }
         else:
             buttons = btn
-            buttons.append(
-                [InlineKeyboardButton(text="📃 Pages 1/1",callback_data="pages")]
-            )
             if BUTTON:
                 buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")]
             await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
@@ -81,9 +78,6 @@ If you do not receive the movie even after entering the correct name...  <code>@
 
         buttons.append(
             [InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_0_{keyword}")]
-        )    
-        buttons.append(
-            [InlineKeyboardButton(text=f"📃 Pages 1/{data['total']}",callback_data="pages")]
         )
         if BUTTON:
             buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
@@ -134,9 +128,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 buttons.append(
                     [InlineKeyboardButton("⏪ BACK", callback_data=f"back_{int(index)+1}_{keyword}")]
                 )
-                buttons.append(
-                    [InlineKeyboardButton(f"📃 Pages {int(index)+2}/{data['total']}", callback_data="pages")]
-                )
                 if BUTTON:
                     buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
 
@@ -149,9 +140,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
                 buttons.append(
                     [InlineKeyboardButton("⏪ BACK", callback_data=f"back_{int(index)+1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)+1}_{keyword}")]
-                )
-                buttons.append(
-                    [InlineKeyboardButton(f"📃 Pages {int(index)+2}/{data['total']}", callback_data="pages")]
                 )
                 if BUTTON:
                     buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
@@ -176,9 +164,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 buttons.append(
                     [InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
                 )
-                buttons.append(
-                    [InlineKeyboardButton(f"📃 Pages {int(index)}/{data['total']}", callback_data="pages")]
-                )
                 if BUTTON:
                     buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
 
@@ -191,9 +176,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
                 buttons.append(
                     [InlineKeyboardButton("⏪ BACK", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
-                )
-                buttons.append(
-                    [InlineKeyboardButton(f"📃 Pages {int(index)}/{data['total']}", callback_data="pages")]
                 )
                 if BUTTON:
                     buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
@@ -226,7 +208,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     ]
                 
                 await query.answer()
-                file = await client.send_cached_media(
+                filess = await client.send_cached_media(
                     chat_id=SEND_CHANNEL,
                     file_id=file_id,
                     caption=f_caption,
@@ -234,7 +216,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
                 message = query.message.reply_to_message
                 humm = [[
-                        InlineKeyboardButton("📥 Download Link 📥", url=f"{file.link}")
+                        InlineKeyboardButton("📥 Download Link 📥", url=f"{filess.link}")
                         ],[
                         InlineKeyboardButton("⚠️ Can't Access❓ Click Here ⚠️", url=f"https://t.me/{SEND_USERNAME}")
                         ]]
@@ -243,9 +225,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 📫 Yᴏʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
-📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {file_name}
+📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
 
-⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {file_size}""", reply_markup=reply_markup)  
+⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)  
         
 
 
