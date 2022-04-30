@@ -68,14 +68,12 @@ If you do not receive the movie even after entering the correct name...  <code>@
                 [InlineKeyboardButton(text="📃 Pages 1/1",callback_data="pages")]
             )
             if BUTTON:
-                buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
-            poster=None
-            if API_KEY:
-                poster=await get_poster(search)
-            if poster:
-                await message.reply_photo(photo=poster, caption=f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
-            else:
-                await message.reply_text(f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
+                buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")]
+            await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
+
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                parse_mode="html", 
+                reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -89,14 +87,11 @@ If you do not receive the movie even after entering the correct name...  <code>@
         )
         if BUTTON:
             buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
-        poster=None
-        if API_KEY:
-            poster=await get_poster(search)
-        if poster:
-            await message.reply_photo(photo=poster, caption=f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
-        else:
-            await message.reply_text(f"<b>Here is What I Found In My Database For Your Query {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </b>", reply_markup=InlineKeyboardMarkup(buttons))
+        await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
 
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                parse_mode="html", 
+                reply_markup=InlineKeyboardMarkup(buttons))
     
 def get_size(size):
     """Get size in readable format"""
