@@ -227,7 +227,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ : {title}
 
-⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)  
+⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
+            return  
         
 
 
