@@ -265,13 +265,13 @@ So forward it to anywhere before downloading!
                         InlineKeyboardButton("⚠️ ᴄᴀɴ'ᴛ ᴀᴄᴄᴇꜱꜱ❓ ᴘʀᴇꜱꜱ ʜᴇʀᴇ ⚠️", url=f"https://t.me/+7kg9oZVwlENiMmNl")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
-                msg1 = await query.message.reply(text=f"""Hey 👋 {query.from_user.mention} 😍
+                msg1 = await query.message.reply(text=f"""**<i>Hey 👋 {query.from_user.mention} 😍
 
 📫 ʏᴏᴜʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
 📂 Mᴏᴠɪᴇ Nᴀᴍᴇ :[CB].{title}
 
-⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}""", reply_markup=reply_markup)
+⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}</i>**""", reply_markup=reply_markup)
                 await asyncio.sleep(600)
                 await filess.delete()
                 await msg1.delete()
