@@ -269,7 +269,7 @@ So forward it to anywhere before downloading!
 
 📫 ʏᴏᴜʀ Fɪʟᴇ ɪꜱ Rᴇᴀᴅʏ 👇
 
-📂 Mᴏᴠɪᴇ Nᴀᴍᴇ :[CB].{title}
+📂 Mᴏᴠɪᴇ Nᴀᴍᴇ :<code>[CB].{title}</code>
 
 ⚙️ Mᴏᴠɪᴇ Sɪᴢᴇ : {size}</i>**""", reply_markup=reply_markup)
                 await asyncio.sleep(600)
