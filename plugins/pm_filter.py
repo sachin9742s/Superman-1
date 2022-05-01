@@ -5,6 +5,7 @@ from pyrogram import Client, filters
 import re
 import asyncio 
 import os
+import pytz, datetime
 from utils import get_filter_results, get_file_details
 BUTTONS = {}
 BOT = {}
@@ -227,7 +228,7 @@ So forward it to anywhere before downloading!
 കോപ്പിറൈറ്റ് ഉള്ളതുകൊണ്ട് ഈ ഫയൽ 5 മിനിറ്റിനുള്ളിൽ ഇവിടെനിന്നും ഡിലീറ്റ് ആകുന്നതാണ്
 അതുകൊണ്ട് ഇവിടെ നിന്നും മറ്റെവിടെക്കെങ്കിലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക</i>"""
                 if f_caption is None:
-                    f_caption = f"""{mention} **[CB].{title} 
+                    f_caption = f""" **[CB].{title} 
 
 {size}
 
