@@ -197,14 +197,27 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 size=get_size(files.file_size)
                 f_caption=files.caption
                 mention=query.from_user.mention
+                m = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+                time = m.hour
+
+                if time < 12:
+                    get="Good Morning"
+                elif time < 15:
+                    get="Good Afternoon"
+                elif time < 20:
+                    get="Good Evening"
+                else:
+                    get="Good Night"
                 if CUSTOM_FILE_CAPTION:
                     try:
                         f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption, mention=query.from_user.mention)
                     except Exception as e:
                         print(e)
-                        f_caption=f"""{mention} **[CB].{title} 
+                        f_caption=f"""**[CB].{title} 
 
 {size}
+
+{get} {mention}
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=**
 
@@ -217,6 +230,8 @@ So forward it to anywhere before downloading!
                     f_caption = f"""{mention} **[CB].{title} 
 
 {size}
+
+{get} {mention}
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=**
 
