@@ -215,7 +215,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         print(e)
                         f_caption=f"""**👋 Hey {mention} 😍, 
 
-<i>[CB].{title}</i>
+<m>[CB].{title}</m>
 
 {size}
 
@@ -231,7 +231,7 @@ So forward it to anywhere before downloading!
                 if f_caption is None:
                     f_caption = f""" **👋 Hey {mention} 😍, 
 
-<i>[CB].{title}</i>
+<m>[CB].{title}</m>
 
 {size}
 
