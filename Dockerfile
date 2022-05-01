@@ -9,4 +9,4 @@ RUN pip3 install -U pip && pip3 install -U -r requirements.txt
 RUN mkdir /Superman
 WORKDIR /Superman
 COPY start.sh
-CMD ["/bin/bash", "/start.sh"]
+CMD ["/bin/bash"]
