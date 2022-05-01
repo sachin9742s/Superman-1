@@ -213,11 +213,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption, mention=query.from_user.mention)
                     except Exception as e:
                         print(e)
-                        f_caption=f"""**👋 Hey {mention} 😍, 
+                        f_caption=f"""**👋 Hey {mention} 😍, **
 
 <m>[CB].{title}</m>
 
-{size}
+**{size}
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -229,11 +229,11 @@ So forward it to anywhere before downloading!
 കോപ്പിറൈറ്റ് ഉള്ളതുകൊണ്ട് ഈ ഫയൽ 5 മിനിറ്റിനുള്ളിൽ ഇവിടെനിന്നും ഡിലീറ്റ് ആകുന്നതാണ്
 അതുകൊണ്ട് ഇവിടെ നിന്നും മറ്റെവിടെക്കെങ്കിലും മാറ്റിയതിന് ശേഷം ഡൗൺലോഡ് ചെയ്യുക</i>"""
                 if f_caption is None:
-                    f_caption = f""" **👋 Hey {mention} 😍, 
+                    f_caption = f""" **👋 Hey {mention} 😍,**
 
 <m>[CB].{title}</m>
 
-{size}
+**{size}
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
