@@ -79,12 +79,12 @@ async def group(client, message):
             if movies:
                 fileid = movies[0].get_fullsizeURL()
                 await message.reply_photo(photo=fileid, 
-                    caption=f"""<b>Hey 👋 |{message.from_user.mention}| 😍
+                    caption=f"""<b>Hey 👋 ||{message.from_user.mention}|| 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
                     reply_markup=InlineKeyboardMarkup(buttons))
             else:    
-                await message.reply_text(f"""<b>Hey 👋 |{message.from_user.mention}| 😍
+                await message.reply_text(f"""<b>Hey 👋 ||{message.from_user.mention}|| 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
                     reply_markup=InlineKeyboardMarkup(buttons))
@@ -108,12 +108,12 @@ async def group(client, message):
         if movies:
             fileid = movies[0].get_fullsizeURL()
             await message.reply_photo(photo=fileid, 
-                caption=f"""<b>Hey 👋 |{message.from_user.mention}| 😍
+                caption=f"""<b>Hey 👋 ||{message.from_user.mention}|| 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
                 reply_markup=InlineKeyboardMarkup(buttons))
         else:    
-            await message.reply_text(f"""<b>Hey 👋 |{message.from_user.mention}| 😍
+            await message.reply_text(f"""<b>Hey 👋 ||{message.from_user.mention}|| 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
                 reply_markup=InlineKeyboardMarkup(buttons))
