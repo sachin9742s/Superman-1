@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 import re
 import asyncio 
 import os
-import imdbpy
+import imdb
 import pytz, datetime
 from utils import get_filter_results, get_file_details
 BUTTONS = {}
