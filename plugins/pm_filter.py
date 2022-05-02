@@ -5,6 +5,7 @@ from pyrogram import Client, filters
 import re
 import asyncio 
 import os
+import imdbpy
 import pytz, datetime
 from utils import get_filter_results, get_file_details
 BUTTONS = {}
@@ -72,12 +73,27 @@ async def group(client, message):
             if BUTTON:
                 buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
 
-            await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
+            search = message.text
+            ia = imdb.IMDb()
+            movies = ia.search_movie(search)
+            if movies:
+                fileid = movies[0].get_fullsizeURL()
+                await message.reply_photo(photo=fileid, 
+                    caption=f"""<b>Hey 👋 {message.from_user.mention} 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
-                reply_markup=InlineKeyboardMarkup(buttons))
-            return
+                    reply_markup=InlineKeyboardMarkup(buttons))
+            else:    
+                await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
 
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                    reply_markup=InlineKeyboardMarkup(buttons))
+        btns = list(split_list(btn, 10)) 
+        keyword = f"{message.chat.id}-{message.id}"
+        BUTTONS[keyword] = {
+            "total" : len(btns),
+            "buttons" : btns
+        }
         data = BUTTONS[keyword]
         buttons = data['buttons'][0].copy()
 
@@ -86,7 +102,18 @@ async def group(client, message):
         )
         if BUTTON:
             buttons.append([InlineKeyboardButton(text="Close ❌",callback_data="close")])
-        await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
+        search = message.text
+        ia = imdb.IMDb()
+        movies = ia.search_movie(search)
+        if movies:
+            fileid = movies[0].get_fullsizeURL()
+            await message.reply_photo(photo=fileid, 
+                caption=f"""<b>Hey 👋 {message.from_user.mention} 😍
+
+📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
+                reply_markup=InlineKeyboardMarkup(buttons))
+        else:    
+            await message.reply_text(f"""<b>Hey 👋 {message.from_user.mention} 😍
 
 📁 Found ✨  Files For Your Query : {search} 👇</b>""", 
                 reply_markup=InlineKeyboardMarkup(buttons))
