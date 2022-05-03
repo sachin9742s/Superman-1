@@ -278,7 +278,7 @@ So forward it to anywhere before downloading!
                     ]
                 
                 await query.answer()
-                filess = await client.send_cached_media(
+                await client.send_cached_media(
                     chat_id=SEND_CHANNEL,
                     file_id=file_id,
                     caption=f_caption,
@@ -302,7 +302,6 @@ So forward it to anywhere before downloading!
 
 <code>𝖳𝗁𝗂𝗌 𝗆𝖾𝗌𝗌𝖺𝗀𝖾 𝗐𝗂𝗅𝗅 𝖻𝖾 𝖽𝖾𝗅𝖾𝗍𝖾𝖽 𝖺𝖿𝗍𝖾𝗋 10 𝗆𝗂𝗇𝗎𝗍𝖾𝗌</code>""", reply_markup=reply_markup)
                 await asyncio.sleep(600)
-                await filess.delete()
                 await msg1.delete()
                 
                 return  
