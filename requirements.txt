@@ -9,3 +9,4 @@ requests
 parse-torrent-name
 pytz
 imdbpy
+heroku3 
