@@ -1,6 +1,7 @@
 import heroku3
 import os
 from pyrogram import Client, filters
+from info import ADMINS
 
 API_KEY = os.environ.get("API_KEY")
 APP_NAME = os.environ.get("APP_NAME")
@@ -14,7 +15,7 @@ async def app_restart():
         return
 
 
-@Client.on_message(filters.command("restart"))
+@Client.on_message(filters.command("restart") & filters.user(ADMINS))
 async def restarts(client, message):
     if API_KEY:
         await message.reply_text("Trying to restart")
