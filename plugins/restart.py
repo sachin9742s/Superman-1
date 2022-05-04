@@ -15,7 +15,7 @@ async def app_restart():
         return
 
 
-@Client.on_message(filters.command("restart") & filters.user(ADMINS)filters.group)
+@Client.on_message(filters.command("restart") & filters.user(ADMINS) & filters.group)
 async def restarts(client, message):
     if API_KEY:
         await message.reply_text("Trying to restart")
