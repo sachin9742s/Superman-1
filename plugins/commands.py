@@ -26,7 +26,7 @@ async def start(bot, cmd):
     )
 
 
-@Client.on_message(filters.command('channel') & filters.user(ADMINS))
+@Client.on_message(filters.command('channel') & filters.group)
 async def channel_info(bot, message):
     """Send basic information of channel"""
     if isinstance(CHANNELS, (int, str)):
@@ -56,7 +56,7 @@ async def channel_info(bot, message):
         os.remove(file)
 
 
-@Client.on_message(filters.command('total') & filters.user(ADMINS))
+@Client.on_message(filters.command('total') & filters.group)
 async def total(bot, message):
     """Show total files in database"""
     msg = await message.reply("Processing...⏳", quote=True)
@@ -68,7 +68,7 @@ async def total(bot, message):
         await msg.edit(f'Error: {e}')
 
 
-@Client.on_message(filters.command('log') & filters.user(ADMINS))
+@Client.on_message(filters.command('log') & filters.group)
 async def log_file(bot, message):
     """Send log file"""
     try:
