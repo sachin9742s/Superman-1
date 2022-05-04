@@ -6,7 +6,7 @@ from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
 from utils import Media, get_file_details, get_size
 logger = logging.getLogger(__name__)
 
-@Client.on_message(filters.command("start"))
+@Client.on_message(filters.command("start") & filters.group)
 async def start(bot, cmd):
     await cmd.reply_text(
         START_MSG,
