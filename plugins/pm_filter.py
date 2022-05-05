@@ -278,7 +278,7 @@ So forward it to anywhere before downloading!
                     ]
                 
                 await query.answer()
-                await client.send_cached_media(
+                filess = await client.send_cached_media(
                     chat_id=SEND_CHANNEL,
                     file_id=file_id,
                     caption=f_caption,
