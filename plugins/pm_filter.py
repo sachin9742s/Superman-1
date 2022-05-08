@@ -14,8 +14,12 @@ SEND_CHANNEL = int(os.environ.get("SEND_CHANNEL"))
 SEND_USERNAME = os.environ.get("SEND_USERNAME")
     
 
-@Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & filters.incoming)
+@Client.on_message(filters.text & filters.group & filters.incoming & filters.chat(AUTH_GROUPS) if AUTH_GROUPS else filters.text & filters.group & ~filters.edited & filters.incoming)
 async def group(client, message):
+await message.reply_chat_action("typing")
+    group_id = message.chat.id
+    name = message.text
+        return
     if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
         return
     if 2 < len(message.text) < 50:    
