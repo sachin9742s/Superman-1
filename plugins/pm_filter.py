@@ -281,7 +281,7 @@ So forward it to anywhere before downloading!
 🗃 File From : {query.message.chat.title} 🏵</i>**"""
                 buttons = [
                     [
-                        InlineKeyboardButton('ᴊᴏɪɴ ɴᴏᴡ ⚫️', url='https://t.me/+yn4CU4occNU2NGNl')
+                        InlineKeyboardButton('ᴊᴏɪɴ ɴᴏᴡ ⚫️', url='https://t.me/+-VGvPqWAf9w1Mjc1')
                     ]
                     ]
                 
@@ -297,7 +297,7 @@ So forward it to anywhere before downloading!
                 humm = [[
                         InlineKeyboardButton("📥 ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ 📥", url=f"{filess.link}")
                         ],[
-                        InlineKeyboardButton("⚠️ ᴄᴀɴ'ᴛ ᴀᴄᴄᴇꜱꜱ❓ ᴘʀᴇꜱꜱ ʜᴇʀᴇ ⚠️", url=f"https://t.me/+7kg9oZVwlENiMmNl")
+                        InlineKeyboardButton("⚠️ ᴄᴀɴ'ᴛ ᴀᴄᴄᴇꜱꜱ❓ ᴘʀᴇꜱꜱ ʜᴇʀᴇ ⚠️", url=f"https://t.me/+rDg8ujjGPq84MmVl")
                         ]]
                 reply_markup=InlineKeyboardMarkup(humm)
                 msg1 = await query.message.reply(text=f"""**<i>Hey 👋 {query.from_user.mention} 😍
